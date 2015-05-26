@@ -3,13 +3,13 @@
     <adminhtml_unsold_index>
         <update handle="unsold_index"/>
         <reference name="content">
-            <block type="unsold/unsold" name="myadmin" template="unsold/unsold.phtml"/>
+            <block type="unsold/unsold" name="myadmin" template="edge/unsold/unsold.phtml"/>
         </reference>
     </adminhtml_unsold_index>
 
     <adminhtml_unsold_post>
         <reference name="content">
-            <block type="unsold/unsold" name="myadmin" template="unsold/unsold.phtml"/>
+            <block type="unsold/unsold" name="myadmin" template="edge/unsold/unsold.phtml"/>
         </reference>
     </adminhtml_unsold_post>
 </layout>
