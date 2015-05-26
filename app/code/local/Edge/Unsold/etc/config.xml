@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Edge_Unsold>
+            <version>1.0.0</version>
+        </Edge_Unsold>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <unsold before="Mage_Adminhtml">Edge_Unsold_Adminhtml</unsold>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <unsold>
+                    <file>edge/unsold.xml</file>
+                </unsold>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <blocks>
+            <unsold>
+                <class>Edge_Unsold_Block_Adminhtml</class>
+            </unsold>
+        </blocks>
+        <helpers>
+            <unsold>
+                <class>Edge_Unsold_Helper</class>
+            </unsold>
+        </helpers>
+    </global>
+</config>

@@ -1,0 +1,23 @@
+{
+    "name": "outeredge/edge-magento-module-report-unsold",
+    "type": "magento-module",
+    "description": "Unsold Product Module by outer/edge",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "outer/edge",
+            "email": "bruno@outeredgeuk.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "extra": {
+        "map": [
+            ["app/code/local/Edge/Unsold", "app/code/local/Edge/Unsold"],
+            ["app/design/adminhtml/default/default/layout/edge/unsold.xml", "app/design/adminhtml/default/default/layout/edge/unsold.xml"],
+            ["app/design/adminhtml/default/default/template/edge/unsold.phtml", "app/design/adminhtml/default/default/template/edge/unsold.phtml"],
+            ["app/etc/modules/Edge_Unsold.xml", "app/etc/modules/Edge_Unsold.xml"]
+        ]
+    }
+}
