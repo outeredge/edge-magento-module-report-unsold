@@ -3,13 +3,13 @@
 /* phtml file to show form on admin panel with two fields
 it will show list of product unsold between given dates */
 
-$to="";
-$from="";
-$to = $this->getRequest()->getParam('report_to');
+$to   = "";
+$from = "";
+$to   = $this->getRequest()->getParam('report_to');
 $from = $this->getRequest()->getParam('report_from');
 
-if ($to !="" && $from !="") {
-    $products = Mage::helper('unsold')->getUnsoldproductslists($from,$to);
+if ($to != "" && $from != "") {
+    $products = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
 }
 
 ?>
@@ -17,21 +17,21 @@ if ($to !="" && $from !="") {
     <table cellspacing="0">
         <tbody>
             <tr>
-                <td style="width:50%;"><h3 class="icon-head"><?php echo $this->__('Unsold Products') ?></h3></td>
+                <td style="width:50%;"><h3 class="icon-head"><?php echo $this->__('Unsold Products'); ?></h3></td>
             </tr>
         </tbody>
     </table>
 </div>
 <div class="switcher">
-    <p class="switcher"><label><?php echo $this->__('Select the date range you want:') ?></label>
-    <form action="<?php echo $this->getUrl('*/*/post/');?>" method="post" id="unsold-post-form" >
-    <?php echo $this->getBlockHtml('formkey')?>
+    <p class="switcher"><label><?php echo $this->__('Select the date range you want:'); ?></label>
+    <form action="<?php echo $this->getUrl('*/*/post/'); ?>" method="post" id="unsold-post-form" >
+    <?php echo $this->getBlockHtml('formkey'); ?>
         <table width="50%" border="0" cellpadding="10" cellspacing="10" >
             <tr>
                 <td>From:&nbsp;</td>
                 <td>
                     <div class="f-left">
-                        <div><input type="text" style="width:5em" value="<?php echo $from;?>" name="report_from" id="period_date_from" class="input-text no-changes required-entry"> <img class="v-middle" alt="Select Date" id="period_date_from_trig" title="Select Date" src="<?php echo Mage::getBaseUrl('skin');?>adminhtml/default/default/images/grid-cal.gif">&nbsp;&nbsp;</div>
+                        <div><input type="text" style="width:5em" value="<?php echo $from; ?>" name="report_from" id="period_date_from" class="input-text no-changes required-entry"> <img class="v-middle" alt="Select Date" id="period_date_from_trig" title="Select Date" src="<?php echo Mage::getBaseUrl('skin');?>adminhtml/default/default/images/grid-cal.gif">&nbsp;&nbsp;</div>
                         <div id="period_date_from_advaice"></div>
                     </div>
                 </td>
@@ -40,7 +40,7 @@ if ($to !="" && $from !="") {
                 <td>To:&nbsp;</td>
                 <td>
                     <div class="f-left">
-                        <div><input type="text" style="width:5em" value="<?php echo $to;?>" name="report_to" id="period_date_to" class="input-text no-changes required-entry"> <img alt="Select Date" id="period_date_to_trig" title="Select Date" class="v-middle" src="<?php echo Mage::getBaseUrl('skin');?>adminhtml/default/default/images/grid-cal.gif">&nbsp;&nbsp;</div>
+                        <div><input type="text" style="width:5em" value="<?php echo $to; ?>" name="report_to" id="period_date_to" class="input-text no-changes required-entry"> <img alt="Select Date" id="period_date_to_trig" title="Select Date" class="v-middle" src="<?php echo Mage::getBaseUrl('skin');?>adminhtml/default/default/images/grid-cal.gif">&nbsp;&nbsp;</div>
                         <div id="period_date_to_advaice"></div>
                     </div>
                 </td>
@@ -54,9 +54,8 @@ if ($to !="" && $from !="") {
         </table>
     </form>
 </div>
-<?php
-if (isset($products)) {?>
 
+<?php if (isset($products)) {?>
 <div class="entry-edit">
     <div class="entry-edit-head">
         <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Unsold Products'); ?></h4>
@@ -71,16 +70,16 @@ if (isset($products)) {?>
                     <td><?php echo $this->__('Views'); ?></td>
                 </tr>
                 <?php
-                $cnt=1;
+                $cnt = 1;
 
                 $dateFrom = new DateTime($from);
-                $from = $dateFrom->format('Y-m-d');
+                $from     = $dateFrom->format('Y-m-d');
 
                 $dateTo = new DateTime($to);
-                $to = $dateTo->format('Y-m-d');
+                $to     = $dateTo->format('Y-m-d');
 
                 foreach ($products as $pro) {
-                    // code to get product views count between given date
+
                     $product = Mage::getModel('catalog/product')->load($pro['id']);
 
                     $viewedProducts = Mage::getResourceModel('reports/product_collection')
@@ -94,10 +93,10 @@ if (isset($products)) {?>
                     ?>
 
                 <tr>
-                    <td><?php echo $cnt;?></td>
-                    <td><a href="<?php echo $this->getUrl('*/catalog_product/edit', array('id' => $pro['id'], 'key' => Mage::getSingleton('core/session')->getFormKey()));?>" target="_blank"><?php echo $product->getName();?></a></td>
-                    <td><?php echo $product->getId();?></td>
-                    <td><?php echo $views;?></td>
+                    <td><?php echo $cnt; ?></td>
+                    <td><a href="<?php echo $this->getUrl('*/catalog_product/edit', array('id' => $pro['id'], 'key' => Mage::getSingleton('core/session')->getFormKey())); ?>" target="_blank"><?php echo $product->getName(); ?></a></td>
+                    <td><?php echo $product->getId(); ?></td>
+                    <td><?php echo $views; ?></td>
                 </tr>
                 <?php $cnt++; }
                 ?>

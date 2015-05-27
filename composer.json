@@ -1,7 +1,7 @@
 {
     "name": "outeredge/edge-magento-module-report-unsold",
     "type": "magento-module",
-    "description": "Unsold Product Module by outer/edge",
+    "description": "Unsold Products Module by outer/edge",
     "license": "MIT",
     "authors": [
         {

@@ -5,9 +5,9 @@ class Edge_Unsold_Adminhtml_UnsoldController extends Mage_Adminhtml_Controller_A
     protected function _initAction()
     {
         $this->loadLayout()
-            ->_title($this->__('outer/edge'))
-            ->_title($this->__('Unsold Product'))
-            ->_setActiveMenu('edge');
+             ->_title($this->__('outer/edge'))
+             ->_title($this->__('Unsold Products'))
+             ->_setActiveMenu('edge');
         return $this;
     }
 
@@ -17,25 +17,24 @@ class Edge_Unsold_Adminhtml_UnsoldController extends Mage_Adminhtml_Controller_A
         $this->renderLayout();
     }
 
-    //form submit handler of amdin panel
     public function postAction()
     {
-        $flag=true;
+        $flag = true;
         $from = $this->getRequest()->getParam('report_from');
-        $to = $this->getRequest()->getParam('report_to');
+        $to   = $this->getRequest()->getParam('report_to');
 
         if ($from == "") {
-            $flag=false;
+            $flag = false;
             Mage::getSingleton('adminhtml/session')
                 ->addError(Mage::helper('unsold')->__('Please select date From'));
         }
         if ($to == "") {
-            $flag=false;
+            $flag = false;
             Mage::getSingleton('adminhtml/session')
                 ->addError(Mage::helper('unsold')->__('Please select date To'));
         }
 
         $this->loadLayout();
-	$this->renderLayout();
+        $this->renderLayout();
     }
 }
