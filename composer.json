@@ -1,5 +1,5 @@
 {
-    "name": "outeredge/edge-magento-module-report-unsold",
+    "name": "outeredge/edge-magento-module-reportunsoldproducts",
     "type": "magento-module",
     "description": "Unsold Products Module by outer/edge",
     "license": "MIT",
@@ -14,10 +14,10 @@
     },
     "extra": {
         "map": [
-            ["app/code/local/Edge/Unsold", "app/code/local/Edge/Unsold"],
-            ["app/design/adminhtml/default/default/layout/edge/unsold.xml", "app/design/adminhtml/default/default/layout/edge/unsold.xml"],
-            ["app/design/adminhtml/default/default/template/edge/unsold/unsold.phtml", "app/design/adminhtml/default/default/template/edge/unsold/unsold.phtml"],
-            ["app/etc/modules/Edge_Unsold.xml", "app/etc/modules/Edge_Unsold.xml"]
+            ["app/code/local/Edge/ReportUnsoldProducts", "app/code/local/Edge/ReportUnsoldProducts"],
+            ["app/design/adminhtml/default/default/layout/edge/reportunsoldproducts.xml", "app/design/adminhtml/default/default/layout/edge/reportunsoldproducts.xml"],
+            ["app/design/adminhtml/default/default/template/edge/reportunsoldproducts/unsold.phtml", "app/design/adminhtml/default/default/template/edge/reportunsoldproducts/unsold.phtml"],
+            ["app/etc/modules/Edge_ReportUnsoldProducts.xml", "app/etc/modules/Edge_ReportUnsoldProducts.xml"]
         ]
     }
 }
