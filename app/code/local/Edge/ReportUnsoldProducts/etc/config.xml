@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Edge_Unsold>
+        <Edge_ReportUnsoldProducts>
             <version>1.0.0</version>
-        </Edge_Unsold>
+        </Edge_ReportUnsoldProducts>
     </modules>
     <admin>
         <routers>
             <adminhtml>
                 <args>
                     <modules>
-                        <unsold before="Mage_Adminhtml">Edge_Unsold_Adminhtml</unsold>
+                        <unsold before="Mage_Adminhtml">Edge_ReportUnsoldProducts_Adminhtml</unsold>
                     </modules>
                 </args>
             </adminhtml>
@@ -20,7 +20,7 @@
         <layout>
             <updates>
                 <unsold>
-                    <file>edge/unsold.xml</file>
+                    <file>edge/reportunsoldproducts.xml</file>
                 </unsold>
             </updates>
         </layout>
@@ -28,12 +28,12 @@
     <global>
         <blocks>
             <unsold>
-                <class>Edge_Unsold_Block_Adminhtml</class>
+                <class>Edge_ReportUnsoldProducts_Block_Adminhtml</class>
             </unsold>
         </blocks>
         <helpers>
             <unsold>
-                <class>Edge_Unsold_Helper</class>
+                <class>Edge_ReportUnsoldProducts_Helper</class>
             </unsold>
         </helpers>
     </global>

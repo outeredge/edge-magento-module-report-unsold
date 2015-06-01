@@ -1,0 +1,38 @@
+ <?xml version="1.0"?>
+<config>
+    <menu>
+        <report>
+            <children>
+                <products>
+                    <children>
+                        <unsold>
+                            <title>Unsold Products</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/unsold/index</action>
+                        </unsold>
+                    </children>
+                </products>
+            </children>
+        </report>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <report>
+                        <children>
+                            <products>
+                                <children>
+                                    <unsold translate="title">
+                                        <title>Unsold Products</title>
+                                        <sort_order>10</sort_order>
+                                    </unsold>
+                                </children>
+                            </products>
+                        </children>
+                    </report>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

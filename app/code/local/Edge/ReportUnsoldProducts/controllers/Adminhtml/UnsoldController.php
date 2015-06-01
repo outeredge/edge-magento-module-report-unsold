@@ -1,6 +1,6 @@
 <?php
 
-class Edge_Unsold_Adminhtml_UnsoldController extends Mage_Adminhtml_Controller_Action
+class Edge_ReportUnsoldProducts_Adminhtml_UnsoldController extends Mage_Adminhtml_Controller_Action
 {
     protected function _initAction()
     {

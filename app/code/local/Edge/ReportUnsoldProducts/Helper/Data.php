@@ -1,6 +1,6 @@
 <?php
 
-class Edge_Unsold_Helper_Data extends Mage_Core_Helper_Abstract
+class Edge_ReportUnsoldProducts_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
      * get unsold products lists between given date
