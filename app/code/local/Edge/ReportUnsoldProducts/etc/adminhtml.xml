@@ -6,7 +6,7 @@
                 <products>
                     <children>
                         <unsold>
-                            <title>Unsold Products</title>
+                            <title>Products Unsold</title>
                             <sort_order>10</sort_order>
                             <action>adminhtml/unsold/index</action>
                         </unsold>
@@ -24,7 +24,7 @@
                             <products>
                                 <children>
                                     <unsold translate="title">
-                                        <title>Unsold Products</title>
+                                        <title>Products Unsold</title>
                                         <sort_order>10</sort_order>
                                     </unsold>
                                 </children>

@@ -14,7 +14,7 @@ class Edge_ReportUnsoldProducts_Adminhtml_UnsoldController extends Mage_Adminhtm
     public function indexAction()
     {
         $this->_initAction()
-             ->_addBreadcrumb(Mage::helper('unsold')->__('Unsold Product'), Mage::helper('unsold')->__('Unsold Product'))
+             ->_addBreadcrumb(Mage::helper('unsold')->__('Products Unsold'), Mage::helper('unsold')->__('Products Unsold'))
              ->_addContent($this->getLayout()->createBlock('unsold/adminhtml_unsold'))
              ->renderLayout();
     }

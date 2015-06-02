@@ -16,15 +16,6 @@
             </adminhtml>
         </routers>
     </admin>
-    <adminhtml>
-        <layout>
-            <updates>
-                <unsold>
-                    <file>edge/reportunsoldproducts.xml</file>
-                </unsold>
-            </updates>
-        </layout>
-    </adminhtml>
     <global>
         <blocks>
             <unsold>
