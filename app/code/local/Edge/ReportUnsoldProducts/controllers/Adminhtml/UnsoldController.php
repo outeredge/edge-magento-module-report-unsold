@@ -6,35 +6,42 @@ class Edge_ReportUnsoldProducts_Adminhtml_UnsoldController extends Mage_Adminhtm
     {
         $this->loadLayout()
              ->_title($this->__('outer/edge'))
-             ->_title($this->__('Unsold Products'))
+             ->_title($this->__('Products Unsold'))
              ->_setActiveMenu('edge');
         return $this;
     }
 
     public function indexAction()
     {
-        $this->_initAction();
-        $this->renderLayout();
+        $this->_initAction()
+             ->_addBreadcrumb(Mage::helper('unsold')->__('Unsold Product'), Mage::helper('unsold')->__('Unsold Product'))
+             ->_addContent($this->getLayout()->createBlock('unsold/adminhtml_unsold'))
+             ->renderLayout();
     }
 
-    public function postAction()
+    /**
+     * Export Unsold Products report to CSV format action
+     */
+    public function exportUnsoldCsvAction()
     {
-        $flag = true;
-        $from = $this->getRequest()->getParam('report_from');
-        $to   = $this->getRequest()->getParam('report_to');
+        $fileName = 'products_unsold.csv';
+        $content  = $this->getLayout()
+            ->createBlock('unsold/adminhtml_unsold_grid')
+            ->getCsv();
 
-        if ($from == "") {
-            $flag = false;
-            Mage::getSingleton('adminhtml/session')
-                ->addError(Mage::helper('unsold')->__('Please select date From'));
-        }
-        if ($to == "") {
-            $flag = false;
-            Mage::getSingleton('adminhtml/session')
-                ->addError(Mage::helper('unsold')->__('Please select date To'));
-        }
+        $this->_prepareDownloadResponse($fileName, $content);
+    }
 
-        $this->loadLayout();
-        $this->renderLayout();
+    /**
+     * Export Unsold Products report to XML format action
+     */
+    public function exportUnsoldExcelAction()
+    {
+        $fileName = 'products_unsold.xml';
+        $content = $this->getLayout()
+            ->createBlock('unsold/adminhtml_unsold_grid')
+            ->getExcel($fileName);
+
+        $this->_prepareDownloadResponse($fileName, $content);
     }
 }

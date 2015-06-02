@@ -28,7 +28,7 @@
     <global>
         <blocks>
             <unsold>
-                <class>Edge_ReportUnsoldProducts_Block_Adminhtml</class>
+                <class>Edge_ReportUnsoldProducts_Block</class>
             </unsold>
         </blocks>
         <helpers>
