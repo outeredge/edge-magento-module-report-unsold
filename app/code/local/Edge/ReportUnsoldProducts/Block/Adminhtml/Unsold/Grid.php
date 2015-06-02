@@ -65,6 +65,7 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
                 'filter'    => false,
                 'sortable'  => false,
                 'index'     => 'stores',
+                'is_system'   => true,
         ));
 
         $this->addExportType('*/*/exportUnsoldCsv', Mage::helper('unsold')->__('CSV'));
