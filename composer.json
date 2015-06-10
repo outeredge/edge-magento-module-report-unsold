@@ -15,7 +15,10 @@
     "extra": {
         "map": [
             ["app/code/local/Edge/ReportUnsoldProducts", "app/code/local/Edge/ReportUnsoldProducts"],
-            ["app/etc/modules/Edge_ReportUnsoldProducts.xml", "app/etc/modules/Edge_ReportUnsoldProducts.xml"]
+            ["app/design/adminhtml/default/default/layout/edge/reportunsoldproducts.xml", "app/design/adminhtml/default/default/layout/edge/reportunsoldproducts.xml"],
+            ["app/design/adminhtml/default/default/template/edge/reportunsoldproducts/container.phtml", "app/design/adminhtml/default/default/template/edge/reportunsoldproducts/container.phtml"],
+-           ["app/design/adminhtml/default/default/template/edge/reportunsoldproducts/unsoldform.phtml", "app/design/adminhtml/default/default/template/edge/reportunsoldproducts/unsoldform.phtml"],
+-           ["app/etc/modules/Edge_ReportUnsoldProducts.xml", "app/etc/modules/Edge_ReportUnsoldProducts.xml"]
         ]
     }
 }
