@@ -4,11 +4,26 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
 {
     protected function _prepareCollection()
     {
-        $productsId = Mage::helper('unsold')->getUnsoldproductslists();
+        $ids  = null;
 
-        $ids = array();
-        foreach ($productsId as $prodId) {
-            $ids[] = $prodId['id'];
+        if ($this->getRequest()->isPost()) {
+            $flag = true;
+            $from = $this->getRequest()->getParam('report_from');
+            $to   = $this->getRequest()->getParam('report_to');
+
+            if ($from == "") {
+                $flag = false;
+                Mage::getSingleton('adminhtml/session')
+                    ->addError(Mage::helper('unsold')->__('Please select date From'));
+            }
+            if ($to == "") {
+                $flag = false;
+                Mage::getSingleton('adminhtml/session')
+                    ->addError(Mage::helper('unsold')->__('Please select date To'));
+            }
+            if ($flag) {
+                $ids = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
+            }
         }
 
         $collection = Mage::getModel('catalog/product')->getCollection()
@@ -38,15 +53,7 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
                  'index'  => 'name',
             )
         );
-        $this->addColumn('created_at',
-            array(
-                'header' => Mage::helper('unsold')->__('Date'),
-                'index'  => 'created_at',
-                'type'   => 'datetime',
-                'width'  => '200px',
-            )
-        );
-        $this->addColumn('action',
+       $this->addColumn('action',
             array(
                 'header'    => Mage::helper('unsold')->__('Action'),
                 'width'     => '50px',
@@ -72,5 +79,10 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
         $this->addExportType('*/*/exportUnsoldExcel', Mage::helper('unsold')->__('Excel XML'));
 
         return parent::_prepareColumns();
-   }
+    }
+
+    public function getMainButtonsHtml()
+    {
+        return '';
+    }
 }

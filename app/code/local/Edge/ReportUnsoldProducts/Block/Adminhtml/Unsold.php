@@ -9,5 +9,6 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold extends Mage_Adminhtml_Bl
         $this->_headerText = Mage::helper('unsold')->__('Products Unsold');
         parent::__construct();
         $this->_removeButton('add');
+        $this->setTemplate('edge/reportunsoldproducts/container.phtml');
     }
 }
