@@ -14,7 +14,15 @@ class Edge_ReportUnsoldProducts_Helper_Data extends Mage_Core_Helper_Abstract
 
         $tableNameSales = $resource->getTableName('sales_flat_order_item');
 
-        $query = "SELECT e.entity_id as id FROM $catalogtableName e WHERE e.entity_id NOT IN (SELECT s1.product_id FROM  $tableNameSales s1) GROUP BY e.entity_id";
+        $tableNameProductEntityInt = Mage::getSingleton("core/resource")->getTableName('catalog_product_entity_int');
+
+        $tableNameEavAttribute = Mage::getSingleton("core/resource")->getTableName('eav_attribute');
+
+        $query = "SELECT e.entity_id as id FROM $catalogtableName e "
+            . "INNER JOIN $tableNameProductEntityInt ei ON e.entity_id=ei.entity_id "
+            . "WHERE ei.attribute_id = (SELECT attribute_id FROM $tableNameEavAttribute WHERE attribute_code = 'status') "
+            . "AND ei.value != 2 "
+            . "AND e.entity_id NOT IN (SELECT s1.product_id FROM  $tableNameSales s1) GROUP BY e.entity_id";
 
         $data = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($query);
 
