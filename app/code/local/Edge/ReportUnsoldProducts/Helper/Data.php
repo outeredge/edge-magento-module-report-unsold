@@ -18,10 +18,12 @@ class Edge_ReportUnsoldProducts_Helper_Data extends Mage_Core_Helper_Abstract
 
         $tableNameEavAttribute = Mage::getSingleton("core/resource")->getTableName('eav_attribute');
 
+        $disabledStatus = Mage_Catalog_Model_Product_Status::STATUS_DISABLED;
+        
         $query = "SELECT e.entity_id as id FROM $catalogtableName e "
             . "INNER JOIN $tableNameProductEntityInt ei ON e.entity_id=ei.entity_id "
             . "WHERE ei.attribute_id = (SELECT attribute_id FROM $tableNameEavAttribute WHERE attribute_code = 'status') "
-            . "AND ei.value != 2 "
+            . "AND ei.value != $disabledStatus "
             . "AND e.entity_id NOT IN (SELECT s1.product_id FROM  $tableNameSales s1) GROUP BY e.entity_id";
 
         $data = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($query);
