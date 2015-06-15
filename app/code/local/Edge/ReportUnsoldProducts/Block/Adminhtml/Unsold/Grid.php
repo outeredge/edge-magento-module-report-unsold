@@ -22,8 +22,16 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
                     ->addError(Mage::helper('unsold')->__('Please select date To'));
             }
             if ($flag) {
+                Mage::getSingleton('adminhtml/session')->setFromData($from);
+                Mage::getSingleton('adminhtml/session')->setToData($to);
+                
                 $ids = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
             }
+        }elseif (strpos($this->getRequest()->getActionName(),'export') !== false) {
+            $from = Mage::getSingleton('adminhtml/session')->getFromData();
+            $to   = Mage::getSingleton('adminhtml/session')->getToData();
+            
+            $ids  = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
         }
 
         $collection = Mage::getModel('catalog/product')->getCollection()
