@@ -30,7 +30,7 @@ class Edge_ReportUnsoldProducts_Helper_Data extends Mage_Core_Helper_Abstract
         
         $query = "SELECT e.entity_id as id FROM $catalogtableName e "
             . "INNER JOIN $tableNameProductEntityInt ei ON e.entity_id=ei.entity_id "
-            . "WHERE ei.attribute_id = (SELECT attribute_id FROM $tableNameEavAttribute WHERE attribute_code = 'status') "
+            . "WHERE ei.attribute_id = (SELECT attribute_id FROM $tableNameEavAttribute WHERE attribute_code = 'status' AND source_model = 'catalog/product_status') "
             . "AND ei.value != $disabledStatus "
             . "AND e.entity_id NOT IN (SELECT s1.product_id FROM  $tableNameSales s1 WHERE s1.created_at BETWEEN '".$newdatefrom." 00:00:00' AND '".$newdateto." 23:59:59') "
             . "GROUP BY e.entity_id";
