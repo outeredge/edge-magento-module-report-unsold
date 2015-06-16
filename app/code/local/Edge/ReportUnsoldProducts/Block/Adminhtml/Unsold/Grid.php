@@ -4,7 +4,11 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
 {
     protected function _prepareCollection()
     {
-        $ids  = null;
+        $ids = null;
+
+        $collection = Mage::getModel('catalog/product')
+            ->getCollection()
+            ->addFieldToFilter('entity_id', 0);
 
         if ($this->getRequest()->isPost()) {
             $flag = true;
@@ -24,23 +28,21 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
             if ($flag) {
                 Mage::getSingleton('adminhtml/session')->setFromData($from);
                 Mage::getSingleton('adminhtml/session')->setToData($to);
-                
-                $ids = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
+
+                $collection = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
             }
         }elseif (strpos($this->getRequest()->getActionName(),'export') !== false ||
-            array_key_exists('page', $this->getRequest()->getParams())) {
+            array_key_exists('page', $this->getRequest()->getParams()) ||
+            array_key_exists('limit', $this->getRequest()->getParams())) {
+
             $from = Mage::getSingleton('adminhtml/session')->getFromData();
             $to   = Mage::getSingleton('adminhtml/session')->getToData();
-            
-            $ids  = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
+
+            $collection = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
         }
 
-        $collection = Mage::getModel('catalog/product')->getCollection()
-            ->addAttributeToSelect('name');
         $this->setCollection($collection);
-
-        $collection->addAttributeToFilter('entity_id', array('in' => $ids));
-
+        $this->getCollection()->getSelect()->group('entity_id');
         return parent::_prepareCollection();
     }
 
@@ -50,7 +52,7 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
             'id',
             array(
                  'header'   => Mage::helper('unsold')->__('ID'),
-                 'sortable' => true,
+                 'sortable' => false,
                  'width'    => '60px',
                  'index'    => 'entity_id',
             )
@@ -60,6 +62,16 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
             array(
                  'header' => Mage::helper('unsold')->__('Name'),
                  'index'  => 'name',
+                 'sortable' => false,
+            )
+        );
+        $this->addColumn(
+            'views',
+            array(
+                 'header' => Mage::helper('unsold')->__('Views'),
+                 'width'    => '60px',
+                 'sortable' => false,
+                 'index'  => 'views',
             )
         );
        $this->addColumn('action',
