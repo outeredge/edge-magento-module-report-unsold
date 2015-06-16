@@ -27,7 +27,8 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
                 
                 $ids = Mage::helper('unsold')->getUnsoldproductslists($from, $to);
             }
-        }elseif (strpos($this->getRequest()->getActionName(),'export') !== false) {
+        }elseif (strpos($this->getRequest()->getActionName(),'export') !== false ||
+            array_key_exists('page', $this->getRequest()->getParams())) {
             $from = Mage::getSingleton('adminhtml/session')->getFromData();
             $to   = Mage::getSingleton('adminhtml/session')->getToData();
             
