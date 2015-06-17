@@ -4,8 +4,6 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
 {
     protected function _prepareCollection()
     {
-        $ids = null;
-
         $collection = Mage::getModel('catalog/product')
             ->getCollection()
             ->addFieldToFilter('entity_id', 0);
@@ -43,6 +41,7 @@ class Edge_ReportUnsoldProducts_Block_Adminhtml_Unsold_Grid extends Mage_Adminht
 
         $this->setCollection($collection);
         $this->getCollection()->getSelect()->group('entity_id');
+        
         return parent::_prepareCollection();
     }
 
