@@ -13,6 +13,14 @@ class Edge_ReportUnsoldProducts_Adminhtml_UnsoldController extends Mage_Adminhtm
 
     public function indexAction()
     {
+        if ($this->getRequest()->isPost()) {
+            Mage::getSingleton('adminhtml/session')->setFrom($this->getRequest()->getParam('report_from'));
+            Mage::getSingleton('adminhtml/session')->setTo($this->getRequest()->getParam('report_to'));
+        } elseif (count($this->getRequest()->getParams()) == 1) {
+            Mage::getSingleton('adminhtml/session')->setFrom('');
+            Mage::getSingleton('adminhtml/session')->setTo('');
+        }
+        
         $this->_initAction()
              ->_addBreadcrumb(Mage::helper('unsold')->__('Products Unsold'), Mage::helper('unsold')->__('Products Unsold'))
              ->_addContent($this->getLayout()->createBlock('unsold/adminhtml_unsold'))
