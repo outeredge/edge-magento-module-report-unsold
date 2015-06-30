@@ -18,8 +18,8 @@ class Edge_ReportUnsoldProducts_Helper_Data extends Mage_Core_Helper_Abstract
         $resource                  = Mage::getSingleton('core/resource');
         $catalogtableName          = $resource->getTableName('catalog/product');
         $tableNameSales            = $resource->getTableName('sales_flat_order_item');
-        $tableNameProductEntityInt = Mage::getSingleton("core/resource")->getTableName('catalog_product_entity_int');
-        $tableNameEavAttribute     = Mage::getSingleton("core/resource")->getTableName('eav_attribute');
+        $tableNameProductEntityInt = $resource->getTableName('catalog_product_entity_int');
+        $tableNameEavAttribute     = $resource->getTableName('eav_attribute');
         $disabledStatus            = Mage_Catalog_Model_Product_Status::STATUS_DISABLED;
 
         $query = "SELECT e.entity_id as id FROM $catalogtableName e "
