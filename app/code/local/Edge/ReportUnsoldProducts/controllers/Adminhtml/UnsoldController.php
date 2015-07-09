@@ -2,6 +2,11 @@
 
 class Edge_ReportUnsoldProducts_Adminhtml_UnsoldController extends Mage_Adminhtml_Controller_Action
 {
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('report/products/unsold');
+    }
+    
     protected function _initAction()
     {
         $this->loadLayout()
