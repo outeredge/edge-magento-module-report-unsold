@@ -1,24 +1,28 @@
 {
     "name": "outeredge/edge-magento-module-reportunsoldproducts",
-    "type": "magento-module",
-    "description": "Unsold Products Module by outer/edge",
-    "license": "MIT",
+    "description": "Unsold Products report for M2, Module by outer/edge",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
     "authors": [
         {
             "name": "outer/edge",
-            "email": "bruno@outeredgeuk.com"
+            "email": "support@outeredgeuk.com",
+            "homepage": "https://outeredgeuk.com/",
+            "role": "Developer"
         }
     ],
     "require": {
-        "magento-hackathon/magento-composer-installer": "*"
+        "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0"
     },
-    "extra": {
-        "map": [
-            ["app/code/local/Edge/ReportUnsoldProducts", "app/code/local/Edge/ReportUnsoldProducts"],
-            ["app/design/adminhtml/default/default/layout/edge/reportunsoldproducts.xml", "app/design/adminhtml/default/default/layout/edge/reportunsoldproducts.xml"],
-            ["app/design/adminhtml/default/default/template/edge/reportunsoldproducts/container.phtml", "app/design/adminhtml/default/default/template/edge/reportunsoldproducts/container.phtml"],
-            ["app/design/adminhtml/default/default/template/edge/reportunsoldproducts/unsoldform.phtml", "app/design/adminhtml/default/default/template/edge/reportunsoldproducts/unsoldform.phtml"],
-            ["app/etc/modules/Edge_ReportUnsoldProducts.xml", "app/etc/modules/Edge_ReportUnsoldProducts.xml"]
-        ]
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "OuterEdge\\ReportUnsoldProducts\\": ""
+        }
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="OuterEdge_ReportUnsoldProducts::report_products_unsold" title="Unsold" translate="title"
+             module="OuterEdge_ReportUnsoldProducts"
+             sortOrder="40" parent="Magento_Reports::report_products" action="reports_unsold/product/unsold"
+             resource="OuterEdge_ReportUnsoldProducts::unsold"/>
+    </menu>
+</config>
